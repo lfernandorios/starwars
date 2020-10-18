@@ -1,0 +1,19 @@
+<p>pelicula-list works!</p>
+
+<mat-card>
+    <mat-card-title>Star War's Peliculas List</mat-card-title>
+    <mat-paginator [length]="count"
+              [pageSize]="10"
+              (page)="handlePageChange()">
+    </mat-paginator>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let pelicula of peliculas">          
+          <h3 mat-line>
+            <a mat-button [routerLink]="['/pelicula-edit', pelicula.url.toString()]">{{pelicula.title}}</a>
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  
+  </mat-card>

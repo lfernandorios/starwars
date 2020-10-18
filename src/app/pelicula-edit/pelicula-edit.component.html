@@ -1,0 +1,41 @@
+<p>pelicula-edit works!</p>
+
+<mat-card>
+    <form #peliculaForm="ngForm" (ngSubmit)="save(peliculaForm.value)">
+      <mat-card-header>
+        <mat-card-title><h2>{{pelicula.title ? 'View' : 'Add'}} Star War's Pelicula</h2></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        
+        <mat-form-field>
+          <input matInput placeholder="Title" [(ngModel)]="pelicula.title" required name="title" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="Episode" [(ngModel)]="pelicula.episode_id" required name="episode_id" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="Director" [(ngModel)]="pelicula.director" required name="director" #name>
+        </mat-form-field>
+        <mat-form-field>          
+            <input matInput placeholder="Release Date" [(ngModel)]="pelicula.release_date" required name="release_date" #name>
+        </mat-form-field>
+        <mat-list>
+            <h3>Personajes of {{pelicula.title}}</h3>
+            <mat-list-item *ngFor="let personaje of personajes">          
+                <h3 mat-line>
+                <a mat-button [routerLink]="['/personaje-edit', personaje.url]">{{personaje.name}}</a>
+                </h3>
+            </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="!peliculaForm.form.valid">Ok</button>
+        
+        <a mat-button routerLink="/pelicula-list">Cancel</a>
+      </mat-card-actions>
+      
+    </form>
+  </mat-card>
+
+  

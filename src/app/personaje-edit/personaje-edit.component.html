@@ -1,0 +1,49 @@
+<mat-card>
+    <form #personajeForm="ngForm" (ngSubmit)="save(personajeForm.value)">
+      <mat-card-header>
+        <mat-card-title><h2>{{personaje.name ? 'View' : 'Add'}} Star War's Personaje</h2></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="personaje.name" required name="name" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="Birth Year" [(ngModel)]="personaje.birth_year" required name="birth_year" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="Gender" [(ngModel)]="personaje.gender" required name="gender" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="eye_color" [(ngModel)]="personaje.eye_color" required name="eye_color" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="hair_color" [(ngModel)]="personaje.hair_color" required name="hair_color" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="skin_color" [(ngModel)]="personaje.skin_color" required name="skin_color" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="height" [(ngModel)]="personaje.height" required name="height" #name>
+        </mat-form-field>
+        <mat-form-field>          
+          <input matInput placeholder="mass" [(ngModel)]="personaje.mass" required name="mass" #name>
+        </mat-form-field>
+        <mat-list>
+          <h3>Peliculas of {{personaje.name}}</h3>
+          <mat-list-item *ngFor="let pelicula of peliculas">          
+              <h3 mat-line>
+              <a mat-button [routerLink]="['/pelicula-edit', pelicula.url]">{{pelicula.title}}</a>
+              </h3>
+          </mat-list-item>
+      </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="!personajeForm.form.valid">Ok</button>
+        
+        <a mat-button routerLink="/personaje-list">Cancel</a>
+      </mat-card-actions>
+      
+    </form>
+  </mat-card>
